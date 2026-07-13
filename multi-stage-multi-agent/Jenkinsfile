@@ -6,8 +6,8 @@ pipeline {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
       }
       steps {
-        sh 'javac hello.java'
-        sh 'java hello'
+        sh 'javac multi-stage-multi-agent/Hello.java'
+        sh 'java -cp multi-stage-multi-agent Hello'
       }
     }
     stage('Front-end') {
@@ -15,7 +15,7 @@ pipeline {
         docker { image 'node:16-alpine' }
       }
       steps {
-        sh 'node app.js'
+        sh 'node multi-stage-multi-agent/app.js'
       }
     }
   }
